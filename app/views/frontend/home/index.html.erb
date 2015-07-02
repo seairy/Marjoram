@@ -1,0 +1,131 @@
+<div id="main">
+  <div id="poster">
+    <div class="image">
+      <a class="current" href="#"><%= image_tag 'frontend/poster_1.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_2.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_3.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_4.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_5.jpg' %></a>
+      <div>上届大会回顾：2012年8月，中国 西安</div>
+    </div>
+    <div class="thumb">
+      <a class="current" href="#"><%= image_tag 'frontend/poster_1.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_2.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_3.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_4.jpg' %></a>
+      <a href="#"><%= image_tag 'frontend/poster_5.jpg' %></a>
+    </div>
+  </div> 
+  <script type="text/javascript">
+  var defaultOpts = { interval: 4000, fadeInTime: 300, fadeOutTime: 200 };
+  var _titles = $("div#poster div.thumb a");
+  var _bodies = $("div#poster div.image a");
+  var _count = _titles.length;
+  var _current = 0;
+  var _intervalID = null;
+  var stop = function() { window.clearInterval(_intervalID); };
+  var slide = function(opts) {
+    if (opts) {
+      _current = opts.current || 0;
+    } else {
+      _current = (_current >= (_count - 1)) ? 0 : (++_current);
+    };
+    _bodies.filter(":visible").fadeOut(defaultOpts.fadeOutTime, function() {
+      _bodies.eq(_current).fadeIn(defaultOpts.fadeInTime);
+      _bodies.removeClass("current").eq(_current).addClass("current");
+    });
+    _titles.removeClass("current").eq(_current).addClass("current");
+  };
+  var go = function() {
+    stop();
+    _intervalID = window.setInterval(function() { slide(); }, defaultOpts.interval);
+  };
+  var itemMouseOver = function(target, items) {
+    stop();
+    var i = $.inArray(target, items);
+    slide({ current: i });
+  };
+  _titles.hover(function() { if($(this).attr('class')!='current'){itemMouseOver(this, _titles); }else{stop();}}, go);
+  _bodies.hover(stop, go);
+  go();
+  
+  $(function(){
+    $('img.captify').captify({
+    speedOver: 'fast',
+    speedOut: 'normal',
+    hideDelay: 500, 
+    animation: 'always-on',   
+    prefix: '',   
+    opacity: '0.7',         
+    className: 'caption-bottom',  
+    position: 'bottom',
+    spanWidth: '100%'
+  });
+});
+  </script>
+  <div class="cb"></div>
+  <div id="notice">
+    <ul>
+      <% @posts.each do |post| %>
+      <li><%= link_to post.title, post %><%= image_tag 'frontend/notice_new.png' if post.featured? %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<div id="sub">
+  <ul>
+    <li>
+      <div class="title">
+        <%= image_tag 'frontend/title_theme_and_agenda.png' %>
+      </div>
+      <div class="content">
+        <ul>
+          <li class="title">会议主题：</li>
+          <li>创新与发展：国际汉语教师培养培训</li>
+          <li class="title">简要日程：</li>
+          <li class="fwb">8月15日</li>
+          <li>全天 报到</li>
+          <li class="fwb">8月16日</li>
+          <li>上午 开幕式</li>
+          <li>上午 大会论坛</li>
+          <li>下午 专题研讨会</li>
+          <li>晚上 会员代表大会</li>
+          <li class="fwb">8月17日</li>
+          <li>上午 专题研讨会</li>
+          <li>下午 大会总结</li>
+          <li>下午 闭幕式</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="title">
+        <%= image_tag 'frontend/title_important_time.png' %>
+      </div>
+      <div class="content">
+        <ul>
+          <li class="title">网上报名：</li>
+          <li>4月18日 至 5月18日（延至5月28日）</li>
+          <li class="title">公布参会名单：</li>
+          <li>5月28日 （延至5月31日）</li>
+          <li class="title">论文全文提交：</li>
+          <li>6月1日 至 7月18日</li>
+          <li class="title">大会报到：</li>
+          <li>8月15日</li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="title">
+        <%= image_tag 'frontend/title_organization.png' %>
+      </div>
+      <div class="content">
+        <ul>
+          <li class="title">主办单位：</li>
+          <li><%= link_to '世界汉语教学学会', 'http://www.shihan.org.cn', :target => '_blank' %></li>
+          <li><%= link_to '国家汉办/孔子学院总部', 'http://www.hanban.org', :target => '_blank' %></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+</div>
+<div class="cb"></div>

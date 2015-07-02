@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>第十二届国际汉语教学研讨会</title>
+    <%= stylesheet_link_tag 'frontend', media: 'all', 'data-turbolinks-track' => true %>
+  </head>
+  <body>
+    <div id="container">
+      <div id="header"></div>
+      <div id="navi">
+        <ul>
+          <li><%= link_to image_tag('frontend/navi_home.png'), '#' %></li>
+          <li><%= link_to image_tag('frontend/navi_intro.png'), '#' %></li>
+          <li><%= link_to image_tag('frontend/navi_notice.png'), '#' %></li>
+          <li><%= link_to image_tag('frontend/navi_history.png'), 'http://www.shihan.org.cn/seminars', :target => '_blank' %></li>
+          <li>
+            <% if false %>
+              <%= link_to image_tag('frontend/navi_participant_mgmt.png'), '#' %>
+            <% else %>
+              <%= link_to image_tag('frontend/navi_participant_signin.png'), '#' %>
+            <% end %>
+          </li>
+          <li>
+            <% if false %>
+              <%= link_to image_tag('frontend/navi_expert_mgmt.png'), '#' %>
+            <% else %>
+              <%= link_to image_tag('frontend/navi_expert_signin.png'), '#' %>
+            <% end %>
+          </li>
+          <li><%= link_to image_tag('frontend/navi_about.png'), 'http://www.shihan.org.cn/about/intro', :target => '_blank' %></li>
+        </ul>
+        <div class="cb"></div>
+      </div>
+      <div id="content">
+        <%= yield %>
+      </div>
+      <div id="footer">
+        <p>世界汉语教学学会 - The International Society for Chinese Language Teaching</p>
+        <p>如有任何疑问或建议请与我们联系，本站内容版权所有：世界汉语教学学会，未经许可不得转载</p>
+        <p>Copyright 1999-2012 All rights reserved</p>
+      </div>
+    </div>
+    <%= javascript_include_tag 'frontend', 'data-turbolinks-track' => true %>
+  </body>
+</html>
