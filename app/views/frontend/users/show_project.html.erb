@@ -1,0 +1,25 @@
+<%= user_submenu_tag %>
+<div id="right">
+  <%= flash_tag %>
+  <fieldset class="form-generic form-thesis">
+    <legend>查看论文</legend>
+    <ul>
+      <li>
+        <label>题目：</label><%= @user.subject %>
+      </li>
+      <li>
+        <label>第一作者：</label><%= @user.first_author %>
+      </li>
+      <li>
+        <label>第二作者：</label><%= @user.second_author %>
+      </li>
+      <li>
+        <label>关键词：</label><%= @user.keywords %>
+      </li>
+      <li>
+        <label>摘要：</label><span class="summary"><%= @user.outline %></span>
+      </li>
+    </ul>
+  </fieldset>
+</div>
+<div class="cb"></div>

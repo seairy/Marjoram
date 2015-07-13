@@ -1,5 +1,6 @@
 //= require jquery
 //= require jquery_ujs
+//= require ckeditor/init
 //= require cms/jquery-migrate-1.2.1.min
 //= require cms/jquery-ui-1.10.3.min
 //= require cms/bootstrap.min

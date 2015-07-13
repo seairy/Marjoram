@@ -1,0 +1,14 @@
+<%= form_tag user_signin_path, :id => 'user_signin' do %>
+<ul class="form-signin">
+  <li>
+    <label>账号：</label><%= text_field_tag :account, params[:account], :class => 'text-field' %><%= content_tag 'span', flash[:invalid_account] unless flash[:invalid_account].blank? %>
+  </li>
+  <li>
+    <label>密码：</label><%= password_field_tag :password, nil, :class => 'text-field' %><%= content_tag 'span', flash[:invalid_password] unless flash[:invalid_password].blank? %>
+  </li>
+</ul>
+<div class="action-generic">
+  <%= link_to '登录', '#', :onclick => "submitForm('user_signin')", :class => 'button' %>
+  <%= link_to '我要申请参会', user_signup_path, :class => 'button' %>
+</div>
+<% end %> 

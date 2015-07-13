@@ -1,0 +1,69 @@
+<div class="pageheader">
+  <h2><i class="fa fa-pencil-square-o"></i> 文章管理 <span>编辑</span></h2>
+</div>
+<div class="contentpanel">
+  <%= render "cms/commons/error_messages", target: @post %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">文章信息</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_for [:cms, @post], html: { class: 'form-horizontal form-bordered' } do |f| %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.title' %></label>
+          <div class="col-sm-6">
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'page.content' %></label>
+          <div class="col-sm-8">
+            <%= f.cktext_area :content, cols: 40 %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.published_at_date' %></label>
+          <div class="col-sm-3">
+            <div class="input-group">
+              <%= f.text_field :published_at_date, value: brac_date(@post.published_at), class: 'form-control' %>
+              <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="input-group">
+              <div class="bootstrap-timepicker"><%= f.text_field :published_at_time, value: brac_time(@post.published_at), class: 'form-control' %></div>
+              <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'setting' %></label>
+          <div class="col-sm-6">
+            <div class="ckbox ckbox-default">
+              <%= f.check_box :visible %>
+              <label for="post_visible"><%= brac_t 'post.visible' %></label>
+            </div>
+            <div class="ckbox ckbox-default">
+              <%= f.check_box :featured %>
+              <label for="post_featured"><%= brac_t 'post.featured' %></label>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12 text-center">
+            <%= f.submit '提交', class: 'btn btn-primary' %>&nbsp;
+            <%= link_to '返回文章信息', [:cms, @post], class: 'btn btn-default' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% content_for :javascript do %>
+  <script>
+    jQuery(document).ready(function(){
+      $('#post_published_at_date').datepicker({dateFormat: 'yy-mm-dd'});
+      $('#post_published_at_time').timepicker({defaultTIme: false, showMeridian: false, minuteStep: 5});
+    });
+  </script>
+<% end %>

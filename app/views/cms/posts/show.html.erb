@@ -1,0 +1,49 @@
+<div class="pageheader">
+  <h2><i class="fa fa-file-text-o"></i> 文章管理 <span>查看</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">文章信息</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_tag nil, class: 'form-horizontal form-bordered' do %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.title' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @post.title, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.content' %></label>
+          <div class="col-sm-8">
+             <%= cktext_area_tag :content, @post.content, cols: 40, ckeditor: { readOnly: 'true', toolbar: [] } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.published_at' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, brac_datetime(@post.published_at), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.visible' %></label>
+          <div class="col-sm-6">
+            <div class="mt5"><%= brac_styled_boolean @post.visible? %></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'post.featured' %></label>
+          <div class="col-sm-6">
+            <div class="mt5"><%= brac_styled_boolean @post.featured? %></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to '返回文章列表', cms_posts_path, class: 'btn btn-default' %>&nbsp;
+      <%= link_to '编辑', edit_cms_post_path(@post), class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

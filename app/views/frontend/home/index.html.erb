@@ -15,54 +15,7 @@
       <a href="#"><%= image_tag 'frontend/poster_4.jpg' %></a>
       <a href="#"><%= image_tag 'frontend/poster_5.jpg' %></a>
     </div>
-  </div> 
-  <script type="text/javascript">
-  var defaultOpts = { interval: 4000, fadeInTime: 300, fadeOutTime: 200 };
-  var _titles = $("div#poster div.thumb a");
-  var _bodies = $("div#poster div.image a");
-  var _count = _titles.length;
-  var _current = 0;
-  var _intervalID = null;
-  var stop = function() { window.clearInterval(_intervalID); };
-  var slide = function(opts) {
-    if (opts) {
-      _current = opts.current || 0;
-    } else {
-      _current = (_current >= (_count - 1)) ? 0 : (++_current);
-    };
-    _bodies.filter(":visible").fadeOut(defaultOpts.fadeOutTime, function() {
-      _bodies.eq(_current).fadeIn(defaultOpts.fadeInTime);
-      _bodies.removeClass("current").eq(_current).addClass("current");
-    });
-    _titles.removeClass("current").eq(_current).addClass("current");
-  };
-  var go = function() {
-    stop();
-    _intervalID = window.setInterval(function() { slide(); }, defaultOpts.interval);
-  };
-  var itemMouseOver = function(target, items) {
-    stop();
-    var i = $.inArray(target, items);
-    slide({ current: i });
-  };
-  _titles.hover(function() { if($(this).attr('class')!='current'){itemMouseOver(this, _titles); }else{stop();}}, go);
-  _bodies.hover(stop, go);
-  go();
-  
-  $(function(){
-    $('img.captify').captify({
-    speedOver: 'fast',
-    speedOut: 'normal',
-    hideDelay: 500, 
-    animation: 'always-on',   
-    prefix: '',   
-    opacity: '0.7',         
-    className: 'caption-bottom',  
-    position: 'bottom',
-    spanWidth: '100%'
-  });
-});
-  </script>
+  </div>
   <div class="cb"></div>
   <div id="notice">
     <ul>
@@ -81,19 +34,18 @@
       <div class="content">
         <ul>
           <li class="title">会议主题：</li>
-          <li>创新与发展：国际汉语教师培养培训</li>
-          <li class="title">简要日程：</li>
-          <li class="fwb">8月15日</li>
-          <li>全天 报到</li>
-          <li class="fwb">8月16日</li>
-          <li>上午 开幕式</li>
-          <li>上午 大会论坛</li>
-          <li>下午 专题研讨会</li>
-          <li>晚上 会员代表大会</li>
-          <li class="fwb">8月17日</li>
-          <li>上午 专题研讨会</li>
-          <li>下午 大会总结</li>
-          <li>下午 闭幕式</li>
+          <li>国际汉语教学理论与实践——课堂教学案例示范与研究</li>
+          <li class="title">主要议题：</li>
+          <li>1. 大学汉语课堂教学案例</li>
+          <li>2. 中小学汉语课堂教学案例</li>
+          <li>3. 短期培训汉语课堂教学案例</li>
+          <li>4. 汉语语法教学案例</li>
+          <li>5. 中华文化教学案例</li>
+          <li>6. 教师培训课程案例</li>
+          <li>7. 新媒体、新技术教学案例</li>
+          <li>8. 语境与汉语、文化教学关系的再认识</li>
+          <li>9. 教学案例对教学理论建设的促进作用</li>
+          <li>10. “教法无法”的哲理思考</li>
         </ul>
       </div>
     </li>
@@ -104,13 +56,11 @@
       <div class="content">
         <ul>
           <li class="title">网上报名：</li>
-          <li>4月18日 至 5月18日（延至5月28日）</li>
+          <li>7月15日 至 8月30日</li>
           <li class="title">公布参会名单：</li>
-          <li>5月28日 （延至5月31日）</li>
+          <li>9月15日 前</li>
           <li class="title">论文全文提交：</li>
-          <li>6月1日 至 7月18日</li>
-          <li class="title">大会报到：</li>
-          <li>8月15日</li>
+          <li>9月15日 至 11月15日</li>
         </ul>
       </div>
     </li>
@@ -129,3 +79,52 @@
   </ul>
 </div>
 <div class="cb"></div>
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    var defaultOpts = { interval: 4000, fadeInTime: 300, fadeOutTime: 200 };
+    var _titles = $("div#poster div.thumb a");
+    var _bodies = $("div#poster div.image a");
+    var _count = _titles.length;
+    var _current = 0;
+    var _intervalID = null;
+    var stop = function() { window.clearInterval(_intervalID); };
+    var slide = function(opts) {
+      if (opts) {
+        _current = opts.current || 0;
+      } else {
+        _current = (_current >= (_count - 1)) ? 0 : (++_current);
+      };
+      _bodies.filter(":visible").fadeOut(defaultOpts.fadeOutTime, function() {
+        _bodies.eq(_current).fadeIn(defaultOpts.fadeInTime);
+        _bodies.removeClass("current").eq(_current).addClass("current");
+      });
+      _titles.removeClass("current").eq(_current).addClass("current");
+    };
+    var go = function() {
+      stop();
+      _intervalID = window.setInterval(function() { slide(); }, defaultOpts.interval);
+    };
+    var itemMouseOver = function(target, items) {
+      stop();
+      var i = $.inArray(target, items);
+      slide({ current: i });
+    };
+    _titles.hover(function() { if($(this).attr('class')!='current'){itemMouseOver(this, _titles); }else{stop();}}, go);
+    _bodies.hover(stop, go);
+    go();
+    
+    $(function(){
+      $('img.captify').captify({
+        speedOver: 'fast',
+        speedOut: 'normal',
+        hideDelay: 500, 
+        animation: 'always-on',   
+        prefix: '',   
+        opacity: '0.7',         
+        className: 'caption-bottom',  
+        position: 'bottom',
+        spanWidth: '100%'
+      });
+    });
+  </script>
+<% end %>

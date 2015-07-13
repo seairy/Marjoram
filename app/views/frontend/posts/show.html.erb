@@ -1,0 +1,11 @@
+<%= generic_submenu_tag %>
+<div id="right">
+  <div class="show-article">
+    <h3><%= @post.title %></h3>
+    <div class="source">来源：世汉学会秘书处</div><div class="date">发表日期：<%= @post.published_at.strftime('%Y年%m月%d日 %H:%M') %></div>
+    <div class="cb"></div>
+    <div class="sperator"></div>
+    <div class="content"><%= raw @post.content %></div>
+  </div>
+</div>
+<div class="cb"></div>

@@ -14,8 +14,8 @@ gem 'simple_enum', '~> 2.1.1'
 gem 'ruby-pinyin', '~> 0.4.5'
 gem 'mini_magick', '~> 4.0.4'
 gem 'carrierwave', '~> 0.10.0'
-gem 'carrierwave-aliyun', '~> 0.3.3'
 gem 'carrierwave-imageoptimizer', '~> 1.2.1'
+gem 'ckeditor', '~> 4.1.2'
 
 group :development, :test do
   gem 'byebug', '~> 3.5.1'
