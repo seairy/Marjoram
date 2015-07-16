@@ -74,7 +74,7 @@
       <label><span>*</span>关键词：</label><%= f.text_field :keywords, :class => 'text-field' %><span>请用逗号分隔多个关键词</span>
     </li>
     <li>
-      <label><span>*</span>摘要：</label><%= f.text_area :outline, :id => 'summary', :class => 'text-area', :onkeyup => 'countSummaryWord()' %><span id="summary-word-count-tip">当前已输入<%= @user.outline.blank? ? 0 : @user.outline.length %>个字符</span>
+      <label><span>*</span>案例及说明：</label><%= f.text_area :outline, :id => 'summary', :class => 'text-area', :onkeyup => 'countSummaryWord()' %><span id="summary-word-count-tip">当前已输入<%= @user.outline.blank? ? 0 : @user.outline.length %>个字符</span>
     </li>
   </ul>
 </fieldset>
