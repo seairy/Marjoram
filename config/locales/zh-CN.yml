@@ -209,6 +209,7 @@ zh-CN:
         mobile_number: 手机
         fax_number: 传真
         email: 电子邮件
+        is_member: 世汉学会会员
         organization: 工作单位
         professional_title: 职称
         position: 职务
