@@ -14,6 +14,20 @@ module ApplicationHelper
       content_tag 'p', h(flash[:notice]), :class => 'notice'
     end
   end
+
+  def boolean_tag value
+    case value
+    when true then '是'
+    when false then '否'
+    end
+  end
+
+  def gender_tag gender
+    case gender
+    when '1' then '男'
+    when '2' then '女'
+    end
+  end
   
   def generic_submenu_tag
     raw "<div id=\"submenu\">

@@ -1,0 +1,157 @@
+<div class="pageheader">
+  <h2><i class="fa fa-file-text-o"></i> 参会者管理 <span>查看</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">参会者信息</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_tag nil, class: 'form-horizontal form-bordered' do %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.account' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.account, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.chinese_name' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.chinese_name, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.foreign_name' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.foreign_name, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.gender' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, gender_tag(@user.gender), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.country_id' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.country.name, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.address' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.address, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.postal_code' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.postal_code, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.phone_number' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.phone_number, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.mobile_number' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.mobile_number, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.fax_number' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.fax_number, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.email' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.email, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.organization' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.organization, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.professional_title' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.professional_title, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.position' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.position, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.is_member' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, boolean_tag(@user.is_member), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.subject' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.subject, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.first_author' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.first_author, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.second_author' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.second_author, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.keywords' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.keywords, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.outline' %></label>
+          <div class="col-sm-8">
+             <%= cktext_area_tag :outline, @user.outline, cols: 40, ckeditor: { readOnly: 'true', toolbar: [] } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.remarks' %></label>
+          <div class="col-sm-8">
+             <%= cktext_area_tag :remarks, @user.remarks, cols: 40, ckeditor: { readOnly: 'true', toolbar: [] } %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.signed_up_at' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, brac_datetime(@user.created_at), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.last_signined_at' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, brac_datetime(@user.last_signined_at), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to '返回文章列表', cms_users_path, class: 'btn btn-default' %>&nbsp;
+      <%= link_to '编辑', edit_cms_user_path(@user), class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

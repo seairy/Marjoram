@@ -200,16 +200,26 @@ zh-CN:
         password: 密码
         password_confirmation: 密码确认
         chinese_name: 中文名
+        foreign_name: 外文名
         gender: 性别
         country_id: 国籍
+        address: 联系地址
+        postal_code: 邮政编码
         phone_number: 座机
         mobile_number: 手机
+        fax_number: 传真
         email: 电子邮件
         organization: 工作单位
+        professional_title: 职称
+        position: 职务
         subject: 论文题目
         first_author: 第一作者
+        second_author: 第二作者
         keywords: 论文关键词
         outline: 论文摘要
+        remarks: 备注
+        signed_up_at: 注册时间
+        last_signined_at: 最后登录时间
       project:
         subject: 论文题目
         first_author: 第一作者
