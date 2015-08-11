@@ -221,6 +221,8 @@ zh-CN:
         remarks: 备注
         signed_up_at: 注册时间
         last_signined_at: 最后登录时间
+        state: 状态
+        state/registered: 已注册
       project:
         subject: 论文题目
         first_author: 第一作者
