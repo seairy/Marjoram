@@ -26,7 +26,7 @@
             <tr>
               <td><%= user.chinese_name %></td>
               <td><%= gender_tag user.gender %></td>
-              <td><%= user.state %></td>
+              <td><%= user.aasm.human_state %></td>
               <td><%= brac_datetime user.created_at %></td>
               <td class="table-action">
                 <%= link_to raw('<i class="fa fa-file-text-o"></i>'), [:cms, user] %>
