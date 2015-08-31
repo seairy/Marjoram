@@ -26,6 +26,11 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index', as: :dashboard
     resources :posts
     resources :users
+    resources :excels do
+      collection do
+        get :all
+      end
+    end
     resources :administrators
     resource :profile do
       get 'edit_password'

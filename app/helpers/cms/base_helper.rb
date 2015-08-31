@@ -66,4 +66,8 @@ module Cms::BaseHelper
   def minute_options
     options_for_select (0..59).map{|minute| ["#{minute.to_s.rjust(2, '0')}分", minute]}
   end
+
+  def gender_tag
+
+  end
 end
