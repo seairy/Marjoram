@@ -34,11 +34,11 @@ module ApplicationHelper
       <h3>#{image_tag 'frontend/title_important_time.png'}</h3>
       <ul>
         <li class=\"title\">网上报名：</li>
-        <li>7月15日 至 8月30日</li>
+        <li>7月15日 至 8月30日（延长至9月30日）</li>
         <li class=\"title\">公布参会名单：</li>
-        <li>9月15日 前</li>
+        <li>10月15日 前</li>
         <li class=\"title\">论文全文提交：</li>
-        <li>9月15日 至 11月15日</li>
+        <li>10月15日 至 11月15日</li>
       </ul>
       <h3>#{image_tag 'frontend/title_organization.png'}</h3>
       <ul>
