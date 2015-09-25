@@ -25,7 +25,11 @@ Rails.application.routes.draw do
     root 'dashboard#index'
     get 'dashboard', to: 'dashboard#index', as: :dashboard
     resources :posts
-    resources :users
+    resources :users do
+      member do
+        delete :trash
+      end
+    end
     resources :excels do
       collection do
         get :all

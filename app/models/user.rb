@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
     state :accepted
     state :declined
     state :trashed
+    event :trash do
+      transitions to: :trashed
+    end
   end
   scope :latest, -> { order(created_at: :desc) }
   validates :account, :format => { :with => /\A[a-zA-Z0-9_]+\z/, :message => "只能使用英文、数字及下划线" }, :length => { :in => 5..16 }, :uniqueness => true, :presence => true

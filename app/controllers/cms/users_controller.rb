@@ -25,9 +25,9 @@ class Cms::UsersController < Cms::BaseController
     end
   end
   
-  def destroy
+  def trash
     @user = User.find(params[:id])
-    @user.destroy
+    @user.trash!
     redirect_to cms_users_path, notice: '删除成功！'
   end
 

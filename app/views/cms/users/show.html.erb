@@ -151,7 +151,8 @@
     </div>
     <div class="panel-footer">
       <%= link_to '返回参会者列表', cms_users_path, class: 'btn btn-default' %>&nbsp;
-      <%= link_to '编辑', edit_cms_user_path(@user), class: 'btn btn-default' %>
+      <%= link_to '编辑', edit_cms_user_path(@user), class: 'btn btn-default' %>&nbsp;
+      <%= link_to '删除', trash_cms_user_path(@user), method: :delete, data: { confirm: '确定要删除吗？' }, class: 'btn btn-danger' %>
     </div>
   </div>
 </div>
