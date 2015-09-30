@@ -15,11 +15,21 @@ Rails.application.routes.draw do
         get :show_project
       end
     end
+    resources :experts do
+      collection do
+        get :dashboard
+        get :edit_password
+        post :update_password
+      end
+    end
     get 'user_signup' => 'users#new', as: :user_signup
     post 'user_signup' => 'users#create'
     get 'user_signin' => 'sessions#new_user', as: :user_signin
     post 'user_signin' => 'sessions#create_user'
     get 'user_signout' => 'sessions#destroy_user', as: :user_signout
+    get 'expert_signin' => 'sessions#new_expert', as: :expert_signin
+    post 'expert_signin' => 'sessions#create_expert'
+    get 'expert_signout' => 'sessions#destroy_expert', as: :expert_signout
   end
   namespace :cms do
     root 'dashboard#index'

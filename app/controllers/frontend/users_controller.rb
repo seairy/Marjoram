@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Frontend::UsersController < Frontend::BaseController
-  before_filter :authenticate_user, :except => [:new, :create]
+  before_filter :authenticate_user, except: [:new, :create]
 
   def dashboard
     @user = User.find(session[:user_id])

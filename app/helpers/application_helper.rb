@@ -70,17 +70,17 @@ module ApplicationHelper
   
   def expert_submenu_tag
     raw "<div id=\"submenu\">
-      <h3>#{image_tag 'title_information.png'}</h3>
+      <h3>#{image_tag 'frontend/title_information.png'}</h3>
       <ul>
         <li>#{link_to '修改密码', edit_password_experts_path}</li>
       </ul>
-      <h3>#{image_tag 'title_review.png'}</h3>
+      <h3>#{image_tag 'frontend/title_review.png'}</h3>
       <ul>
-        <li>#{link_to '未处理论文', unrate_expert_ratings_path(Expert.find(session[:expert_id]))}</li>
-        <li>#{link_to '已处理论文', rated_expert_ratings_path(Expert.find(session[:expert_id]))}</li>
-        <li>#{link_to '论文评审标准', standard_expert_ratings_path(Expert.find(session[:expert_id]))}</li>
+        <li>#{link_to '未处理论文', ''}</li>
+        <li>#{link_to '已处理论文', ''}</li>
+        <li>#{link_to '论文评审标准', ''}</li>
       </ul>
-      <h3>#{image_tag 'title_system.png'}</h3>
+      <h3>#{image_tag 'frontend/title_system.png'}</h3>
       <ul>
         <li>#{link_to '注销', expert_signout_path}</li>
       </ul>

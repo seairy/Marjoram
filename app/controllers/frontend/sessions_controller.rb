@@ -23,4 +23,25 @@ class Frontend::SessionsController < Frontend::BaseController
     session[:user_last_signined_at] = nil
     redirect_to user_signin_path
   end
+
+  def create_expert
+    expert = Expert.where(account: params[:account]).first
+    if expert.blank?
+      redirect_to expert_signin_url(:account => params[:account]), :flash => { :invalid_account => '账号不存在或输入不正确，请检查'}
+    else
+      if expert.authenticate(params[:password])
+        session[:expert_id] = expert.id
+        session[:expert_name] = expert.name
+        redirect_to dashboard_experts_url
+      else
+        redirect_to expert_signin_url(:account => params[:account]), :flash => { :invalid_password => '密码输入不正确，请检查' }
+      end
+    end
+  end
+
+  def destroy_expert
+    session[:expert_id] = nil
+    session[:expert_name] = nil
+    redirect_to expert_signin_path
+  end
 end
