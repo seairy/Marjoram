@@ -26,6 +26,7 @@ Rails.application.routes.draw do
       collection do
         get :unhandled
         get :handled
+        get :standard
       end
     end
     get 'user_signup' => 'users#new', as: :user_signup

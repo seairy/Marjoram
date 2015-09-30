@@ -78,6 +78,7 @@ module ApplicationHelper
       <ul>
         <li>#{link_to '未处理论文', unhandled_reviews_path}</li>
         <li>#{link_to '已处理论文', handled_reviews_path}</li>
+        <li>#{link_to '评审标准', standard_reviews_path}</li>
       </ul>
       <h3>#{image_tag 'frontend/title_system.png'}</h3>
       <ul>
