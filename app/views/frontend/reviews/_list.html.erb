@@ -1,0 +1,8 @@
+<ul class="list-ratings">
+  <% @reviews.each do |review| %>
+    <li>
+      <p><span class="fwb">论文题目：</span><%= link_to review.user.subject, review %></p>
+      <p><span class="fwb">关键词：</span><%= review.user.keywords %></p>
+    </li>
+  <% end %>
+</ul>

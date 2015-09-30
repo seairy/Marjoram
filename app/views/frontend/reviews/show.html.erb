@@ -1,0 +1,45 @@
+<%= expert_submenu_tag %>
+<div id="right">
+  <%= flash_tag %>
+  <%= form_for @review do |f| %>
+  <%= render "frontend/commons/error_messages", :target => @review %>
+  <fieldset class="form-generic">
+    <legend>论文信息</legend>
+    <ul>
+      <li>
+        <label>题目：</label><%= @review.user.subject %>
+      </li>
+      <li>
+        <label>关键词：</label><%= @review.user.keywords %>
+      </li>
+      <li>
+        <%= @review.user.outline %>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset class="form-generic">
+    <legend>评审信息</legend>
+    <ul>
+      <li>
+        <label>审核：</label>
+        <%= f.radio_button :result, :success, :checked => true %><span class="cgreen">通过</span>
+        <%= f.radio_button :result, :failure %><span class="cred">不通过</span>
+        <%= f.radio_button :result, :reservation %><span class="cblue">保留</span>
+      </li>
+      <li>
+        <label>我的意见：</label><%= f.text_area :comment, :class => 'text-area' %>
+      </li>
+    </ul>
+  </fieldset>
+  <% if @review.result_progressing? %>
+  <div class="action-generic">
+    <%= link_to '填写完毕，提交评审信息', '#', :onclick => "submitForm('edit_review_#{@review.id}')", :class => 'button' %>
+  </div>
+  <% else %>
+  <div class="action-generic">
+    <%= link_to '修改评审信息', '#', :onclick => "submitForm('edit_review_#{@review.id}')", :class => 'button' %>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+<div class="cb"></div>

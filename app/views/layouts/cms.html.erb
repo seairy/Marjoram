@@ -35,6 +35,11 @@
                 <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 参会者列表"), cms_users_path %></li>
               </ul>
             </li>
+            <li class="nav-parent"><a href=""><i class="fa fa-star"></i> <span>专家管理</span></a>
+              <ul class="children">
+                <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 专家列表"), cms_experts_path %></li>
+              </ul>
+            </li>
             <li class="nav-parent"><a href=""><i class="fa fa-file-excel-o"></i> <span>数据导出</span></a>
               <ul class="children">
                 <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 全部参会者"), all_cms_excels_path %></li>

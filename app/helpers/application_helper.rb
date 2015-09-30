@@ -76,14 +76,22 @@ module ApplicationHelper
       </ul>
       <h3>#{image_tag 'frontend/title_review.png'}</h3>
       <ul>
-        <li>#{link_to '未处理论文', ''}</li>
-        <li>#{link_to '已处理论文', ''}</li>
-        <li>#{link_to '论文评审标准', ''}</li>
+        <li>#{link_to '未处理论文', unhandled_reviews_path}</li>
+        <li>#{link_to '已处理论文', handled_reviews_path}</li>
       </ul>
       <h3>#{image_tag 'frontend/title_system.png'}</h3>
       <ul>
         <li>#{link_to '注销', expert_signout_path}</li>
       </ul>
     </div>"
+  end
+
+  def te_review_result result
+    case result
+    when :progressing then '进行中'
+    when :success then '同意'
+    when :failure then '不同意'
+    when :reservation then '保留'
+    end
   end
 end

@@ -1,0 +1,41 @@
+<div class="pageheader">
+  <h2><i class="fa fa-list"></i> 专家管理 <span>列表</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped mb30">
+          <thead>
+            <tr>
+              <th><%= brac_t 'expert.name' %></th>
+              <th><%= brac_t 'expert.group' %></th>
+              <th><%= brac_t 'expert.unhandled_reviews_count' %></th>
+              <th><%= brac_t 'expert.handled_reviews_count' %></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="5"><%= brac_paginate @experts %></td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <% @experts.each do |expert| %>
+            <tr>
+              <td><%= expert.name %></td>
+              <td><%= expert.primary? ? 'A组' : 'B组' %></td>
+              <td><%= expert.reviews.unhandled.count %></td>
+              <td><%= expert.reviews.handled.count %></td>
+              <td class="table-action">
+                <%= link_to raw('<i class="fa fa-file-text-o"></i>'), [:cms, expert] %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

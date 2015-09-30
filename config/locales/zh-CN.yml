@@ -234,8 +234,12 @@ zh-CN:
         password: 密码
         password_confirmation: 密码确认
         name: 姓名
+        group: 组别
+        unhandled_reviews_count: 未处理评审
+        handled_reviews_count: 已处理评审
       review:
         marking: 评审方式
+        result: 结果
       rating:
         approved: 是否通过
         points: 得分

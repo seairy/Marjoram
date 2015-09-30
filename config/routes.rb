@@ -22,6 +22,12 @@ Rails.application.routes.draw do
         post :update_password
       end
     end
+    resources :reviews do
+      collection do
+        get :unhandled
+        get :handled
+      end
+    end
     get 'user_signup' => 'users#new', as: :user_signup
     post 'user_signup' => 'users#create'
     get 'user_signin' => 'sessions#new_user', as: :user_signin
@@ -40,6 +46,8 @@ Rails.application.routes.draw do
         delete :trash
       end
     end
+    resources :experts
+    resources :reviews
     resources :excels do
       collection do
         get :all
