@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
   before_create :hash_password
   belongs_to :country
+  has_many :reviews
   aasm column: 'state' do
     state :registered, initial: true
     state :accepted
