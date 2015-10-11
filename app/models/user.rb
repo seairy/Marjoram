@@ -23,6 +23,14 @@ class User < ActiveRecord::Base
   validates :keywords, presence: true
   validates :outline, presence: true
 
+  def group_a_review
+    self.reviews.select{|r| r.expert.primary?}.first
+  end
+
+  def group_b_review
+    self.reviews.select{|r| !r.expert.primary?}.first
+  end
+
   def authenticate password
     self.hashed_password == Digest::MD5.hexdigest(password) ? self : nil
   end
