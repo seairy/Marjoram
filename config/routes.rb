@@ -13,8 +13,10 @@ Rails.application.routes.draw do
         get :edit_project
         put :update_project
         get :show_project
+        get :invitation
       end
     end
+    resources :attachments
     resources :experts do
       collection do
         get :dashboard

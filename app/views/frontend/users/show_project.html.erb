@@ -19,6 +19,14 @@
       <li>
         <label>摘要：</label><span class="summary"><%= @user.outline %></span>
       </li>
+      <li>
+        <label>论文全文：</label><%= @user.file.blank? ? '未提交' : link_to('点击下载', @user.file.url) %>
+      </li>
+      <% @user.attachments.each do |attachment| %>
+      <li>
+        <label>附件：</label><%= attachment.name %>（<%= link_to '点击下载', attachment.file.url %>）
+      </li>
+      <% end %>
     </ul>
   </fieldset>
 </div>

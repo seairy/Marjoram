@@ -2,8 +2,10 @@ class User < ActiveRecord::Base
   include AASM
   attr_accessor :password, :password_confirmation
   before_create :hash_password
+  mount_uploader :file, BaseUploader
   belongs_to :country
   has_many :reviews
+  has_many :attachments
   aasm column: 'state' do
     state :registered, initial: true
     state :accepted

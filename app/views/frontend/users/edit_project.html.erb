@@ -3,28 +3,33 @@
   <%= form_for @user, url: update_project_users_path, method: :put do |f| %>
   <%= render "frontend/commons/error_messages", :target => @user %>
   <fieldset class="form-generic">
-    <legend>修改论文</legend>
+    <legend>提交全文</legend>
     <ul>
       <li>
-        <label><span>*</span>题目：</label><%= f.text_field :subject, :class => 'text-field' %>
+        <label>题目：</label><%= text_field_tag nil, @user.subject, readonly: true, :class => 'text-field' %>
       </li>
       <li>
-        <label><span>*</span>第一作者：</label><%= f.text_field :first_author, :class => 'text-field' %>
+        <label>第一作者：</label><%= text_field_tag nil, @user.first_author, readonly: true, :class => 'text-field' %>
       </li>
       <li>
-        <label>第二作者：</label><%= f.text_field :second_author, :class => 'text-field' %>
+        <label>第二作者：</label><%= text_field_tag nil, @user.second_author, readonly: true, :class => 'text-field' %>
       </li>
       <li>
-        <label><span>*</span>关键词：</label><%= f.text_field :keywords, :class => 'text-field' %>
+        <label>关键词：</label><%= text_field_tag nil, @user.keywords, readonly: true, :class => 'text-field' %>
       </li>
       <li>
-        <label><span>*</span>摘要：</label><%= f.text_area :outline, :id => 'summary', :class => 'text-area', :onkeyup => 'countSummaryWord()' %><span id="summary-word-count-tip">当前已输入<%= @user.outline.length %>个字符</span>
+        <label>摘要：</label><%= text_area_tag nil, @user.outline, readonly: true, :class => 'text-area' %>
+      </li>
+      <li><hr /></li>
+      <li>
+        <label><span>*</span>论文全文：</label><%= f.file_field :file, :class => 'text-field' %>
       </li>
     </ul>
   </fieldset>
   <% end %>
   <div class="action-generic">
-    <%= link_to '更新论文信息', '#', :onclick => "submitForm('edit_user_#{@user.id}')", :class => 'button' %>
+    <%= link_to '添加附件', new_attachment_path, :class => 'button' %>
+    <%= link_to '提交论文全文', '#', :onclick => "submitForm('edit_user_#{@user.id}')", :class => 'button' %>
   </div>
 </div>
 <div class="cb"></div>

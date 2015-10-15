@@ -1,0 +1,20 @@
+<%= user_submenu_tag %>
+<div id="right">
+  <%= form_for @attachment do |f| %>
+  <%= render "frontend/commons/error_messages", :target => @attachment %>
+  <fieldset class="form-generic">
+    <ul>
+      <li>
+        <label><span>*</span>附件描述</label><%= f.text_field :name, :class => 'text-field' %>
+      </li>
+      <li>
+        <label><span>*</span>文件</label><%= f.file_field :file, :class => 'text-field' %>
+      </li>
+    </ul>
+  </fieldset>
+  <% end %>
+  <div class="action-generic">
+    <%= link_to '提交新附件', '#', :onclick => "submitForm('new_attachment')", :class => 'button' %>
+  </div>
+</div>
+<div class="cb"></div>

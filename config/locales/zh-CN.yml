@@ -244,3 +244,6 @@ zh-CN:
         approved: 是否通过
         points: 得分
         opinion: 评审意见
+      attachment:
+        name: 附件描述
+        file: 文件

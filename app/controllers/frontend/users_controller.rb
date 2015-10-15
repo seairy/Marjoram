@@ -68,7 +68,7 @@ class Frontend::UsersController < Frontend::BaseController
   
   def invitation
     @user = User.find(session[:user_id])
-    render :layout => nil
+    render layout: nil
   end
 
   protected
