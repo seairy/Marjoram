@@ -22,11 +22,29 @@
       font-size: 18px;
     }
     #stamp {
+      position: relative;
       padding-top: 70px;
       padding-right: 16px;
       height: 200px;
       text-align: right;
-      background: url('<%= image_path 'frontend/stamp.png' %>') no-repeat top right;
+    }
+    #stamp p.line-1 {
+      position: absolute;
+      right: 30px;
+      top: 80px;
+      z-index: 10;
+    }
+    #stamp p.line-2 {
+      position: absolute;
+      right: 30px;
+      top: 105px;
+      z-index: 10;
+    }
+    #stamp img {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      z-index: 1;
     }
     </style>
   </head>
@@ -39,8 +57,9 @@
     <p>　　请于11月15日前将回执发回秘书处shihanxuehui@hanban.org。</p>
     <br />
     <div id="stamp">
-      <p>世界汉语教学学会</p>
-      <p>2015年10月15日</p>
+      <p class="line-1">世界汉语教学学会</p>
+      <p class="line-2">2015年10月15日</p>
+      <%= image_tag 'frontend/stamp.png' %>
     </div>
   </body>
 </html>
