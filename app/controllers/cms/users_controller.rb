@@ -31,6 +31,10 @@ class Cms::UsersController < Cms::BaseController
     redirect_to cms_users_path, notice: '删除成功！'
   end
 
+  def accepted
+    @users = User.accepted.latest.page(params[:page])
+  end
+
   protected
     def user_params
       params.require(:user).permit!

@@ -45,6 +45,9 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index', as: :dashboard
     resources :posts
     resources :users do
+      collection do
+        get :accepted
+      end
       member do
         delete :trash
       end

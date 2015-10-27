@@ -219,11 +219,14 @@ zh-CN:
         keywords: 论文关键词
         outline: 论文摘要
         remarks: 备注
+        file: 论文全文
         signed_up_at: 注册时间
         last_signined_at: 最后登录时间
         state: 状态
         state/registered: 已注册
         state/trashed: 已删除
+        state/accepted: 已通过
+        state/declined: 未通过
       project:
         subject: 论文题目
         first_author: 第一作者

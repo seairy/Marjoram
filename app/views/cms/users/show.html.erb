@@ -130,6 +130,18 @@
           </div>
         </div>
         <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.file' %></label>
+          <div class="col-sm-6">
+            <div class="mt5">
+              <% if @user.file.blank? %>
+              <span class="label label-danger">未提交</span>
+              <% else %>
+              <%= link_to raw('<span class="label label-success">点击下载</span>'), @user.file.url, target: '_blank' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
           <label class="col-sm-3 control-label"><%= brac_t 'user.remarks' %></label>
           <div class="col-sm-8">
              <%= cktext_area_tag :remarks, @user.remarks, cols: 40, ckeditor: { readOnly: 'true', toolbar: [] } %>
