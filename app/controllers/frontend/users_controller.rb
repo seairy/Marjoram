@@ -1,6 +1,6 @@
 # -*- encoding : utf-8 -*-
 class Frontend::UsersController < Frontend::BaseController
-  before_filter :authenticate_user, except: [:new, :create]
+  before_filter :authenticate_user, except: [:new, :create, :new_visitor, :create_visitor]
 
   def dashboard
     @user = User.find(session[:user_id])
@@ -11,6 +11,10 @@ class Frontend::UsersController < Frontend::BaseController
   end
 
   def new
+    @user = User.new
+  end
+
+  def new_visitor
     @user = User.new
   end
 
@@ -28,6 +32,15 @@ class Frontend::UsersController < Frontend::BaseController
       render 'create_successful'
     else
       render action: 'new'
+    end
+  end
+
+  def create_visitor
+    @user = User.new(user_params.merge(type: :visitor))
+    if @user.save
+      render 'create_successful'
+    else
+      render action: 'new_visitor'
     end
   end
 

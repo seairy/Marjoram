@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     end
     get 'user_signup' => 'users#new', as: :user_signup
     post 'user_signup' => 'users#create'
+    get 'visitor_signup' => 'users#new_visitor', as: :visitor_signup
+    post 'visitor_signup' => 'users#create_visitor'
     get 'user_signin' => 'sessions#new_user', as: :user_signin
     post 'user_signin' => 'sessions#create_user'
     get 'user_signout' => 'sessions#destroy_user', as: :user_signout
