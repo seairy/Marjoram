@@ -14,6 +14,7 @@ Rails.application.routes.draw do
         put :update_project
         get :show_project
         get :invitation
+        get :receipt
       end
     end
     resources :attachments
