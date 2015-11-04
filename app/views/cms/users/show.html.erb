@@ -164,7 +164,9 @@
       <% end %>
     </div>
     <div class="panel-footer">
-      <% if @user.type_regular? %>
+      <% if @user.type_regular? and @user.registered? %>
+      <%= link_to '返回待评审参会者', progressing_cms_users_path, class: 'btn btn-default' %>&nbsp;
+      <% elsif @user.type_regular? and @user.accepted? %>
       <%= link_to '返回论文参会者', accepted_cms_users_path, class: 'btn btn-default' %>&nbsp;
       <% elsif @user.type_visitor? %>
       <%= link_to '返回旁听参会者', visitor_cms_users_path, class: 'btn btn-default' %>&nbsp;

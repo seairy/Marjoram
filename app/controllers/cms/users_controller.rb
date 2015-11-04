@@ -31,6 +31,10 @@ class Cms::UsersController < Cms::BaseController
     redirect_to cms_users_path, notice: '删除成功！'
   end
 
+  def progressing
+    @users = User.type_regulars.registered.latest.page(params[:page])
+  end
+
   def accepted
     @users = User.type_regulars.accepted.latest.page(params[:page])
   end

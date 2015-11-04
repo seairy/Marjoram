@@ -49,6 +49,7 @@ Rails.application.routes.draw do
     resources :posts
     resources :users do
       collection do
+        get :progressing
         get :accepted
         get :visitor
       end
