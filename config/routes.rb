@@ -50,6 +50,7 @@ Rails.application.routes.draw do
     resources :users do
       collection do
         get :accepted
+        get :visitor
       end
       member do
         delete :trash
@@ -60,6 +61,8 @@ Rails.application.routes.draw do
     resources :excels do
       collection do
         get :all
+        get :accepted
+        get :visitor
       end
     end
     resources :administrators

@@ -7,6 +7,16 @@ class Cms::ExcelsController < Cms::BaseController
     send_data file.string, content_type: 'application/xls', filename: "all_users_#{Time.now.strftime '%Y%m%d%H%M'}.xls"
   end
 
+  def accepted
+    file = export_users(User.type_regulars.accepted)
+    send_data file.string, content_type: 'application/xls', filename: "accepted_users_#{Time.now.strftime '%Y%m%d%H%M'}.xls"
+  end
+
+  def visitor
+    file = export_users(User.type_visitors)
+    send_data file.string, content_type: 'application/xls', filename: "visitor_users_#{Time.now.strftime '%Y%m%d%H%M'}.xls"
+  end
+
   protected
     def export_users users
       StringIO.new.tap do |file|

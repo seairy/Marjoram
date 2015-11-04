@@ -32,7 +32,11 @@ class Cms::UsersController < Cms::BaseController
   end
 
   def accepted
-    @users = User.accepted.latest.page(params[:page])
+    @users = User.type_regulars.accepted.latest.page(params[:page])
+  end
+
+  def visitor
+    @users = User.type_visitors.latest.page(params[:page])
   end
 
   protected

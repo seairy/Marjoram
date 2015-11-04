@@ -1,5 +1,5 @@
 <div class="pageheader">
-  <h2><i class="fa fa-list"></i> 参会者管理 <span>论文参会者</span></h2>
+  <h2><i class="fa fa-list"></i> 参会者管理 <span>旁听参会者</span></h2>
 </div>
 <div class="contentpanel">
   <%= brac_flash %>
@@ -11,7 +11,6 @@
             <tr>
               <th><%= brac_t 'user.chinese_name' %></th>
               <th><%= brac_t 'user.gender' %></th>
-              <th><%= brac_t 'user.file' %></th>
               <th><%= brac_t 'user.signed_up_at' %></th>
               <th></th>
             </tr>
@@ -26,13 +25,6 @@
             <tr>
               <td><%= user.chinese_name %></td>
               <td><%= gender_tag user.gender %></td>
-              <td>
-                <% if user.file.blank? %>
-                <span class="label label-danger">未提交</span>
-                <% else %>
-                <span class="label label-success">已提交</span>
-                <% end %>
-              </td>
               <td><%= brac_datetime user.created_at %></td>
               <td class="table-action">
                 <%= link_to raw('<i class="fa fa-file-text-o"></i>'), [:cms, user] %>

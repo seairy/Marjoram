@@ -99,6 +99,7 @@
             <%= text_field_tag nil, boolean_tag(@user.is_member), readonly: true, class: 'form-control' %>
           </div>
         </div>
+        <% if @user.type_regular? %>
         <div class="form-group">
           <label class="col-sm-3 control-label"><%= brac_t 'user.subject' %></label>
           <div class="col-sm-6">
@@ -141,6 +142,7 @@
             </div>
           </div>
         </div>
+        <% end %>
         <div class="form-group">
           <label class="col-sm-3 control-label"><%= brac_t 'user.remarks' %></label>
           <div class="col-sm-8">
@@ -162,7 +164,11 @@
       <% end %>
     </div>
     <div class="panel-footer">
-      <%= link_to '返回参会者列表', cms_users_path, class: 'btn btn-default' %>&nbsp;
+      <% if @user.type_regular? %>
+      <%= link_to '返回论文参会者', accepted_cms_users_path, class: 'btn btn-default' %>&nbsp;
+      <% elsif @user.type_visitor? %>
+      <%= link_to '返回旁听参会者', visitor_cms_users_path, class: 'btn btn-default' %>&nbsp;
+      <% end %>
       <%= link_to '编辑', edit_cms_user_path(@user), class: 'btn btn-default' %>&nbsp;
       <%= link_to '删除', trash_cms_user_path(@user), method: :delete, data: { confirm: '确定要删除吗？' }, class: 'btn btn-danger' unless @user.trashed? %>
     </div>
