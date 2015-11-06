@@ -41,16 +41,16 @@ class User < ActiveRecord::Base
   def human_type
     case self.type
     when :regular then '论文代表'
-    when :regular then '旁听代表'
+    when :visitor then '旁听代表'
     end
   end
 
   def human_state
     case self.state
-    when :registered then '待评审'
-    when :accepted then '已通过'
-    when :declined then '未通过'
-    when :trashed then '已删除'
+    when 'registered' then '待评审'
+    when 'accepted' then '已通过'
+    when 'declined' then '未通过'
+    when 'trashed' then '已删除'
     end
   end
 
