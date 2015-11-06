@@ -38,6 +38,22 @@ class User < ActiveRecord::Base
     self.update(hashed_password: Digest::MD5.hexdigest(password))
   end
 
+  def human_type
+    case self.type
+    when :regular then '论文代表'
+    when :regular then '旁听代表'
+    end
+  end
+
+  def human_state
+    case self.state
+    when :registered then '待评审'
+    when :accepted then '已通过'
+    when :declined then '未通过'
+    when :trashed then '已删除'
+    end
+  end
+
   protected
     def hash_password
       self.hashed_password = Digest::MD5.hexdigest self.password

@@ -44,6 +44,7 @@
             </li>
             <li class="nav-parent"><a href=""><i class="fa fa-file-excel-o"></i> <span>数据导出</span></a>
               <ul class="children">
+                <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 全部参会者"), all_cms_excels_path %></li>
                 <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 论文参会者"), accepted_cms_excels_path %></li>
                 <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 旁听参会者"), visitor_cms_excels_path %></li>
               </ul>
