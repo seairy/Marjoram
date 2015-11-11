@@ -1,0 +1,131 @@
+<div class="pageheader">
+  <h2><i class="fa fa-pencil-square-o"></i> 用户管理 <span>编辑</span></h2>
+</div>
+<div class="contentpanel">
+  <%= render "cms/commons/error_messages", target: @user %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">用户信息</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_for [:cms, @user], html: { class: 'form-horizontal form-bordered' } do |f| %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.account' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @user.account, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.chinese_name' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :chinese_name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.foreign_name' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :foreign_name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.address' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :address, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.postal_code' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :postal_code, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.phone_number' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :phone_number, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.mobile_number' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :mobile_number, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.fax_number' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :fax_number, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.email' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.organization' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :organization, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.professional_title' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :professional_title, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.position' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :position, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.subject' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :subject, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.first_author' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :first_author, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.second_author' %></label>
+          <div class="col-sm-8">
+            <%= f.text_field :second_author, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.outline' %></label>
+          <div class="col-sm-8">
+            <%= f.cktext_area :outline, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.remarks' %></label>
+          <div class="col-sm-8">
+            <%= f.cktext_area :remarks, cols: 40 %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12 text-center">
+            <%= f.submit '提交', class: 'btn btn-primary' %>&nbsp;
+            <%= link_to '返回用户信息', [:cms, @user], class: 'btn btn-default' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% content_for :javascript do %>
+  <script>
+    jQuery(document).ready(function(){
+      $('#user_published_at_date').datepicker({dateFormat: 'yy-mm-dd'});
+      $('#user_published_at_time').timepicker({defaultTIme: false, showMeridian: false, minuteStep: 5});
+    });
+  </script>
+<% end %>
