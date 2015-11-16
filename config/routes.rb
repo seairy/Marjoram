@@ -66,6 +66,7 @@ Rails.application.routes.draw do
         get :visitor
       end
     end
+    get :search, to: 'search#create', as: :search
     resources :administrators
     resource :profile do
       get 'edit_password'

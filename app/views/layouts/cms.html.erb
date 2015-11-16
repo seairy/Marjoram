@@ -55,6 +55,9 @@
       <div class="mainpanel">
         <div class="headerbar">
           <a class="menutoggle"><i class="fa fa-bars"></i></a>
+          <%= form_tag cms_search_path, method: :get, class: 'searchform' do %>
+            <input type="text" class="form-control" name="keyword" placeholder="查找参会者" />
+          <% end %>
           <div class="header-right">
             <ul class="headermenu">
               <li>

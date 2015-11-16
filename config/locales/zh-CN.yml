@@ -196,6 +196,7 @@ zh-CN:
         record_invalid: ! '验证失败: %{errors}'
     attributes:
       user:
+        type: 类型
         account: 账号
         password: 密码
         password_confirmation: 密码确认
