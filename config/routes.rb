@@ -32,8 +32,8 @@ Rails.application.routes.draw do
         get :standard
       end
     end
-    get 'user_signup' => 'users#new', as: :user_signup
-    post 'user_signup' => 'users#create'
+    #get 'user_signup' => 'users#new', as: :user_signup
+    #post 'user_signup' => 'users#create'
     get 'visitor_signup' => 'users#new_visitor', as: :visitor_signup
     post 'visitor_signup' => 'users#create_visitor'
     get 'user_signin' => 'sessions#new_user', as: :user_signin
