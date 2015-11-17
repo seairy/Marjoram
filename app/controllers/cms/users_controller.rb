@@ -31,6 +31,12 @@ class Cms::UsersController < Cms::BaseController
     redirect_to cms_users_path, notice: '删除成功！'
   end
 
+  def reset_password
+    @user = User.find(params[:id])
+    @user.update_password('123456')
+    redirect_to [:cms, @user], notice: '更新成功！密码已经重置为123456！'
+  end
+
   def progressing
     @users = User.type_regulars.registered.latest.page(params[:page])
   end

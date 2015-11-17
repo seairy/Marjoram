@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       end
       member do
         delete :trash
+        put :reset_password
       end
     end
     resources :experts

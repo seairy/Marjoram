@@ -171,6 +171,7 @@
       <% elsif @user.type_visitor? %>
       <%= link_to '返回旁听参会者', visitor_cms_users_path, class: 'btn btn-default' %>&nbsp;
       <% end %>
+      <%= link_to '重置密码', reset_password_cms_user_path(@user), method: :put, data: { confirm: '确定要重置密码吗？' }, class: 'btn btn-danger' %>&nbsp;
       <%= link_to '编辑', edit_cms_user_path(@user), class: 'btn btn-default' %>&nbsp;
       <%= link_to '删除', trash_cms_user_path(@user), method: :delete, data: { confirm: '确定要删除吗？' }, class: 'btn btn-danger' unless @user.trashed? %>
     </div>
