@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   before_create :hash_password
   mount_uploader :file, BaseUploader
   as_enum :type, [:regular, :visitor], prefix: true, map: :string
+  as_enum :charging_type, [:free, :fee], prefix: true, map: :string
   belongs_to :country
   has_many :reviews
   has_many :attachments
