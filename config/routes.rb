@@ -32,6 +32,13 @@ Rails.application.routes.draw do
         get :standard
       end
     end
+    resources :ratings do
+      collection do
+        get :unhandled
+        get :handled
+        get :standard
+      end
+    end
     #get 'user_signup' => 'users#new', as: :user_signup
     #post 'user_signup' => 'users#create'
     get 'visitor_signup' => 'users#new_visitor', as: :visitor_signup
@@ -60,6 +67,7 @@ Rails.application.routes.draw do
     end
     resources :experts
     resources :reviews
+    resources :ratings
     resources :excels do
       collection do
         get :all

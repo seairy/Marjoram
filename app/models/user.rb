@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   as_enum :charging_type, [:free, :fee], prefix: true, map: :string
   belongs_to :country
   has_many :reviews
+  has_many :ratings
   has_many :attachments
   aasm column: 'state' do
     state :registered, initial: true

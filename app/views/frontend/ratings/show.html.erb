@@ -1,0 +1,43 @@
+<%= expert_submenu_tag %>
+<div id="right">
+  <%= flash_tag %>
+  <%= form_for @rating do |f| %>
+  <%= render "frontend/commons/error_messages", :target => @rating %>
+  <fieldset class="form-generic">
+    <legend>论文信息</legend>
+    <ul>
+      <li>
+        <label>题目：</label><%= @rating.user.subject %>
+      </li>
+      <li>
+        <label>关键词：</label><%= @rating.user.keywords %>
+      </li>
+      <li>
+        <label>论文全文：</label><%= link_to '点击下载', @rating.user.file.url, target: '_blank' %>
+      </li>
+    </ul>
+  </fieldset>
+  <fieldset class="form-generic">
+    <legend>评审信息</legend>
+    <ul>
+      <li>
+        <label>评分：</label>
+        <%= f.text_field :score %><span>(0-100分)</span>
+      </li>
+      <li>
+        <label>我的意见：</label><%= f.text_area :comment, :class => 'text-area' %>
+      </li>
+    </ul>
+  </fieldset>
+  <% if @rating.score.blank? %>
+  <div class="action-generic">
+    <%= link_to '填写完毕，提交评审信息', '#', :onclick => "submitForm('edit_rating_#{@rating.id}')", :class => 'button' %>
+  </div>
+  <% else %>
+  <div class="action-generic">
+    <%= link_to '修改评审信息', '#', :onclick => "submitForm('edit_rating_#{@rating.id}')", :class => 'button' %>
+  </div>
+  <% end %>
+  <% end %>
+</div>
+<div class="cb"></div>

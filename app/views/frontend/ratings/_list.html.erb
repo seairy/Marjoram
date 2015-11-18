@@ -1,0 +1,8 @@
+<ul class="list-ratings">
+  <% @ratings.each do |rating| %>
+    <li>
+      <p><span class="fwb">论文题目：</span><%= link_to rating.user.subject, rating %></p>
+      <p><span class="fwb">关键词：</span><%= rating.user.keywords %></p>
+    </li>
+  <% end %>
+</ul>

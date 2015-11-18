@@ -1,0 +1,42 @@
+<div class="pageheader">
+  <h2><i class="fa fa-file-text-o"></i> 评审管理 <span>查看</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">专家信息</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_tag nil, class: 'form-horizontal form-bordered' do %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.chinese_name' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @rating.user.name, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'user.subject' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @rating.user.subject, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'rating.score' %></label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @rating.score, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= brac_t 'rating.comment' %></label>
+          <div class="col-sm-6">
+            <%= text_area_tag nil, @rating.comment, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to '返回专家详情', [:cms, @rating.expert], class: 'btn btn-default' %>
+    </div>
+  </div>
+</div>

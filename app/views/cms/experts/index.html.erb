@@ -11,8 +11,8 @@
             <tr>
               <th><%= brac_t 'expert.name' %></th>
               <th><%= brac_t 'expert.group' %></th>
-              <th><%= brac_t 'expert.unhandled_reviews_count' %></th>
-              <th><%= brac_t 'expert.handled_reviews_count' %></th>
+              <th><%= brac_t 'expert.unhandled_ratings_count' %></th>
+              <th><%= brac_t 'expert.handled_ratings_count' %></th>
               <th></th>
             </tr>
           </thead>
@@ -26,8 +26,8 @@
             <tr>
               <td><%= expert.name %></td>
               <td><%= expert.primary? ? 'A组' : 'B组' %></td>
-              <td><%= expert.reviews.unhandled.count %></td>
-              <td><%= expert.reviews.handled.count %></td>
+              <td><%= expert.ratings.unhandled.count %></td>
+              <td><%= expert.ratings.handled.count %></td>
               <td class="table-action">
                 <%= link_to raw('<i class="fa fa-file-text-o"></i>'), [:cms, expert] %>
               </td>

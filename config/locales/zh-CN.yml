@@ -241,13 +241,14 @@ zh-CN:
         group: 组别
         unhandled_reviews_count: 未处理评审
         handled_reviews_count: 已处理评审
+        unhandled_ratings_count: 未处理评审
+        handled_ratings_count: 已处理评审
       review:
         marking: 评审方式
         result: 结果
       rating:
-        approved: 是否通过
-        points: 得分
-        opinion: 评审意见
+        score: 评分
+        comment: 评审意见
       attachment:
         name: 附件描述
         file: 文件
