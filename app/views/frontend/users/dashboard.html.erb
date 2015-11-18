@@ -1,9 +1,9 @@
 <%= user_submenu_tag %>
 <div id="right">
   <p>欢迎您，<%= session[:user_chinese_name] %></p>
-  <% if @user.accepted? %>
+  <% if @user.type_regular? and @user.accepted? %>
   <p>您的论文摘要已通过评审，请按时提交论文正文！</p>
-  <% elsif @user.declined? %>
+  <% elsif @user.type_regular? and @user.declined? %>
   <p>很遗憾您的论文摘要没有通过评审。感谢您对本次研讨会的大力支持！</p>
   <% end %>
 </div>
