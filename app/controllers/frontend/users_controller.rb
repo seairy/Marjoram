@@ -1,6 +1,7 @@
 # -*- encoding : utf-8 -*-
 class Frontend::UsersController < Frontend::BaseController
   before_filter :authenticate_user, except: [:new, :create, :new_visitor, :create_visitor]
+  before_filter :only_staff, only: [:new, :new_visitor, :create, :create_visitor]
 
   def dashboard
     @user = User.find(session[:user_id])
@@ -87,5 +88,9 @@ class Frontend::UsersController < Frontend::BaseController
   protected
     def user_params
       params.require(:user).permit!
+    end
+
+    def only_staff
+      redirect_to user_signin_path if params[:staff] != 'true'
     end
 end
