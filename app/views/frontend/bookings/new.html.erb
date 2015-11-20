@@ -1,0 +1,42 @@
+<%= user_submenu_tag %>
+<div id="right">
+  <%= flash_tag %>
+  <%= form_for @booking do |f| %>
+  <%= render "frontend/commons/error_messages", :target => @booking %>
+  <ul class="list-hotels">
+    <% @hotels.each do |hotel| %>
+    <li>
+      <h3><%= hotel.name %></h3>
+      <div class="address">地址：<%= hotel.address %></div>
+      <div class="address">距离会场：<%= hotel.distance %></div>
+      <div class="address">摆渡车：<%= hotel.ferry_car? ? '有' : '无' %></div>
+      <div class="room">
+        <% hotel.rooms.each do |room| %>
+            <p class="name"><%= room.name %>：<%= room.price.round %>元/天</p>
+          <% if room.full? %>
+            <p class="action cred">该房已订满</p>
+          <% else %>
+            <p class="action">选择此房 <%= f.radio_button :room_id, room.id %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="cb"></div>
+    </li>
+    <% end %>
+  </ul>
+  <fieldset class="form-generic form-booking">
+    <ul>
+      <li>
+        <label>入住日期：</label><%= f.date_select :entrance_date, :use_month_numbers => true, :start_year => 2015, :end_year => 2015, :default => { :month => 12, :day => 8} %> 至 <%= f.date_select :departure_date, :use_month_numbers => true, :start_year => 2015, :end_year => 2015, :default => { :month => 12, :day => 10} %>
+      </li>
+      <li>
+        <label>备注信息：</label><%= f.text_area :comment, :class => 'text-area' %>
+      </li>
+    </ul>
+  </fieldset>
+  <div class="action-generic">
+    <%= link_to '填写完成，提交', '#', :onclick => "submitForm('new_booking')", :class => 'button' %>
+  </div>
+  <% end %>
+</div>
+<div class="cb"></div>

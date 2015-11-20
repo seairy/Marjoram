@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :reviews
   has_many :ratings
   has_many :attachments
+  has_many :bookings
   aasm column: 'state' do
     state :registered, initial: true
     state :accepted

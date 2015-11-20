@@ -1,0 +1,27 @@
+<%= user_submenu_tag %>
+<div id="right">
+  <fieldset class="form-generic">
+    <legend>酒店预订信息</legend>
+    <ul>
+      <li>
+        <label>酒店：</label><%= @booking.room.hotel.name %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <label>房型：</label><%= @booking.room.name %>
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <label>价格：</label><%= @booking.room.price.round %>元/天
+      </li>
+    </ul>
+    <ul>
+      <li>
+        <label>入住日期：</label><%= @booking.entrance_date.strftime('%Y年%m月%d日') %> 至 <%= @booking.departure_date.strftime('%Y年%m月%d日') %>
+      </li>
+    </ul>
+  </fieldset>
+</div>
+<div class="cb"></div>

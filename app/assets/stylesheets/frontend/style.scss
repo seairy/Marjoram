@@ -335,26 +335,24 @@ div.show-article {
 ul.list-hotels {
   list-style: none;
   li {
-    padding-bottom: 30px;
+    margin-bottom: 20px;
+    border-bottom: 2px #ccc solid;
     div.address {
-      padding: 8px 0;
-    }
-    img {
-      float: left;
-      padding: 1px;
-      border: 1px #CCC solid;
+      padding: 4px 0;
     }
     div.room {
-      float: right;
-      padding-bottom: 20px;
-      width: 320px;
-      p.action {
-        padding-bottom: 20px;
+      margin-top: 10px;
+      padding-bottom: 10px;
+      p.name {
+        font-weight: bold;
       }
-    }
-    div.description {
-      float: right;
-      width: 320px;
+      p.action {
+        width: 80px;
+        border: 1px #ccc solid;
+        margin-bottom: 8px;
+        text-align: center;
+        background-color: #eee;
+      }
     }
   }
 }

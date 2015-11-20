@@ -252,3 +252,7 @@ zh-CN:
       attachment:
         name: 附件描述
         file: 文件
+      booking:
+        room_id: 房型
+        entrance_date: 入住日期
+        departure_date: 离开日期
