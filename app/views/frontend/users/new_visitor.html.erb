@@ -1,5 +1,5 @@
 <%= form_for @user, url: visitor_signup_path do |f| %>
-<%= f.hidden_field :staff, value: 'true' if params[:staff] == 'true' %>
+<%= hidden_field_tag :staff, 'true' if params[:staff] == 'true' %>
 <%= render "frontend/commons/error_messages", :target => @user %>
 <fieldset class="form-generic">
 </fieldset>
