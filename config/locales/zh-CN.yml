@@ -252,6 +252,13 @@ zh-CN:
       attachment:
         name: 附件描述
         file: 文件
+      hotel:
+        name: 酒店
+      room:
+        name: 房型
+        quantity: 总量
+        bookings_count: 已预订
+        available_quantity: 剩余
       booking:
         room_id: 房型
         entrance_date: 入住日期

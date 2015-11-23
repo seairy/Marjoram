@@ -1,0 +1,36 @@
+<div class="pageheader">
+  <h2><i class="fa fa-list"></i> 酒店管理 <span>列表</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped mb30">
+          <thead>
+            <tr>
+              <th><%= brac_t 'hotel.name' %></th>
+              <th><%= brac_t 'room.name' %></th>
+              <th><%= brac_t 'room.quantity' %></th>
+              <th><%= brac_t 'room.bookings_count' %></th>
+              <th><%= brac_t 'room.available_quantity' %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @hotels.each do |hotel| %>
+            <% hotel.rooms.each do |room| %>
+            <tr>
+              <td><%= hotel.name %></td>
+              <td><%= room.name %></td>
+              <td><%= room.quantity %></td>
+              <td><%= room.bookings.count %></td>
+              <td><%= room.quantity - room.bookings.count %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

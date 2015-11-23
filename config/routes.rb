@@ -69,6 +69,7 @@ Rails.application.routes.draw do
     resources :experts
     resources :reviews
     resources :ratings
+    resources :hotels
     resources :excels do
       collection do
         get :all
