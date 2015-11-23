@@ -1,5 +1,5 @@
 <%= form_for @user, :html => { :multipart => true } do |f| %>
-<%= f.hidden_field :staff, true if params[:staff] == 'true' %>
+<%= f.hidden_field :staff, 'true' if params[:staff] == 'true' %>
 <%= render "frontend/commons/error_messages", :target => @user %>
 <fieldset class="form-generic">
 </fieldset>
