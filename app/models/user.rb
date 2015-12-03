@@ -33,6 +33,14 @@ class User < ActiveRecord::Base
     self.reviews.select{|r| !r.expert.primary?}.first
   end
 
+  def group_a_rating
+    self.ratings.select{|r| r.expert.primary?}.first
+  end
+
+  def group_b_rating
+    self.ratings.select{|r| !r.expert.primary?}.first
+  end
+
   def authenticate password
     self.hashed_password == Digest::MD5.hexdigest(password) ? self : nil
   end
