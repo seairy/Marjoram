@@ -75,6 +75,7 @@ Rails.application.routes.draw do
         get :all
         get :accepted
         get :visitor
+        get :hotel
       end
     end
     get :search, to: 'search#create', as: :search
