@@ -58,14 +58,9 @@ module ApplicationHelper
         <li>#{link_to '打印邀请函', invitation_users_path, target: '_blank' if User.find(session[:user_id]).accepted?}</li>
         <li>#{link_to '下载参会回执', '/receipt.docx', target: '_blank' if User.find(session[:user_id]).accepted?}</li>
       </ul>
-      <h3>#{image_tag 'frontend/title_hotel.png'}</h3>
-      <ul>
-        <li>#{link_to '酒店预定', new_booking_path if User.find(session[:user_id]).accepted?}</li>
-      </ul>
       <h3>#{image_tag 'frontend/title_thesis.png'}</h3>
       <ul>
         <li>#{link_to '查看论文', show_project_users_path}</li>
-        <li>#{link_to '提交全文', edit_project_users_path if User.find(session[:user_id]).accepted?}</li>
       </ul>
       <h3>#{image_tag 'frontend/title_system.png'}</h3>
       <ul>

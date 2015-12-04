@@ -23,9 +23,9 @@ class Frontend::UsersController < Frontend::BaseController
     @user = User.find(session[:user_id])
   end
   
-  def edit_project
-    @user = User.find(session[:user_id])
-  end
+  # def edit_project
+  #   @user = User.find(session[:user_id])
+  # end
 
   def create
     @user = User.new(user_params)
@@ -54,14 +54,14 @@ class Frontend::UsersController < Frontend::BaseController
     end
   end
 
-  def update_project
-    @user = User.find(session[:user_id])
-    if @user.update(user_params)
-      redirect_to show_project_users_path, :notice => '论文信息修改成功'
-    else
-      render action: 'edit_project'
-    end
-  end
+  # def update_project
+  #   @user = User.find(session[:user_id])
+  #   if @user.update(user_params)
+  #     redirect_to show_project_users_path, :notice => '论文信息修改成功'
+  #   else
+  #     render action: 'edit_project'
+  #   end
+  # end
   
   def update_password
     @user = User.find(session[:user_id])

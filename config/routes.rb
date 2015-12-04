@@ -39,7 +39,6 @@ Rails.application.routes.draw do
         get :standard
       end
     end
-    resources :bookings
     get 'user_signup' => 'users#new', as: :user_signup
     post 'user_signup' => 'users#create'
     get 'visitor_signup' => 'users#new_visitor', as: :visitor_signup
@@ -80,6 +79,19 @@ Rails.application.routes.draw do
     end
     get :search, to: 'search#create', as: :search
     resources :administrators
+    resource :profile do
+      get 'edit_password'
+      put 'update_password'
+    end
+    get 'signin', to: 'sessions#new', as: :signin
+    post 'signin', to: 'sessions#create'
+    get 'signout', to: 'sessions#destroy', as: :signout
+  end
+  namespace :check_in do
+    root 'dashboard#index'
+    get 'dashboard', to: 'dashboard#index', as: :dashboard
+    resources :staffs
+    resources :participants
     resource :profile do
       get 'edit_password'
       put 'update_password'
