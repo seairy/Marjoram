@@ -41,6 +41,24 @@ class User < ActiveRecord::Base
     self.ratings.select{|r| !r.expert.primary?}.first
   end
 
+  def general_score
+    if self.ratings.count.zero?
+      '未指派'
+    elsif self.ratings.count == 1
+      self.ratings.first.score.blank? ? '未评审' : "#{self.ratings.first.score}分"
+    elsif self.ratings.count == 2
+      if self.ratings.first.score.blank? and self.ratings.second.score.blank?
+        '未评审'
+      elsif !self.ratings.first.score.blank? and self.ratings.second.score.blank?
+        "#{self.ratings.first.score}分"
+      elsif self.ratings.first.score.blank? and !self.ratings.second.score.blank?
+        "#{self.ratings.second.score}分"
+      else
+        "#{((self.ratings.first.score + self.ratings.second.score) / 2).round}分"
+      end
+    end
+  end
+
   def authenticate password
     self.hashed_password == Digest::MD5.hexdigest(password) ? self : nil
   end
