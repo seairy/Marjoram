@@ -5,6 +5,11 @@ namespace :check_in do
 
   task import_regular_and_visitor: :environment do
     (User.type_regulars.accepted + User.type_visitors.accepted).each do |user|
+      registration_fees = if user.type_regular?
+        1000
+      else
+        user.charging_type_fee? ? 300 : 0
+      end
       Participant.create!(type: user.type,
         name: user.chinese_name,
         gender: (user.gender == 1 ? :male : :female),
@@ -18,7 +23,7 @@ namespace :check_in do
         room_id: user.bookings.first.try(:room_id),
         entrance_date: user.bookings.first.try(:entrance_date),
         departure_date: user.bookings.first.try(:departure_date),
-        registration_fees: 0,
+        registration_fees: registration_fees,
         isclt_member_fees: 0,
         checked_in: false)
     end
