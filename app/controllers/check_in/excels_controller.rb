@@ -18,7 +18,7 @@ class CheckIn::ExcelsController < CheckIn::BaseController
       end
       sheet = book.create_worksheet(name: '无住宿')
       sheet.row(0).concat %w{ID 参会类型 姓名 工作单位 世汉会员 会议费 会员费 总计 POS 现金 发票抬头 备注}
-      Participant.where(room_id: hotel.rooms.map(&:id)).each_with_index do |participant, i|
+      Participant.where(room_id: nil).each_with_index do |participant, i|
         sheet.insert_row(i + 1, [participant.id, participant.human_type, participant.name, participant.organization_name, (participant.is_member? ? '是' : '否'), (participant.registration_fees.zero? ? '免费' : "#{participant.registration_fees}元"), (participant.isclt_member_fees.zero? ? '无' : "#{participant.isclt_member_fees}元"), "#{(participant.registration_fees + participant.isclt_member_fees)}元", '', '', '', ''])
       end
       book.write(file)
