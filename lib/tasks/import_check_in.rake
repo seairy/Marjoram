@@ -16,6 +16,8 @@ namespace :check_in do
         subject: user.subject,
         is_member: user.is_member?,
         room_id: user.bookings.first.try(:room_id),
+        entrance_date: user.bookings.first.try(:entrance_date),
+        departure_date: user.bookings.first.try(:departure_date),
         registration_fees: 0,
         isclt_member_fees: 0,
         checked_in: false)
