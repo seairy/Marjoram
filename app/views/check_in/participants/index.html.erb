@@ -1,0 +1,66 @@
+<div class="pageheader">
+  <h2><i class="fa fa-list"></i> 参会者管理 <span>列表</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="row">
+    <div class="col-sm-4 col-md-3">
+      <%= form_for check_in_participants_path, method: :get do %>
+      <h4 class="subtitle mb5">参会类型</h4>
+      <%= select_tag :type, options_for_select([['所有', :all], ['理事代表', :councilman], ['特邀代表', :invited], ['论文代表', :regular], ['旁听代表', :visitor]], params[:type]) %>
+      <div class="mb20"></div>
+      <h4 class="subtitle mb5">报到状态</h4>
+      <%= select_tag :checked_in, options_for_select([['所有', :all], ['未报到', :unchecked_in], ['已报到', :checked_in]], params[:checked_in]) %>
+      <div class="mb20"></div>
+      <%= submit_tag '搜索', class: 'btn btn-primary' %>
+      <% end %>
+    </div>
+    <div class="col-md-9">
+      <div class="table-responsive">
+        <table class="table table-striped mb30">
+          <thead>
+            <tr>
+              <th>参会类型</th>
+              <th>姓名</th>
+              <th>性别</th>
+              <th>国籍</th>
+              <th>预定酒店</th>
+              <th>报到状态</th>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <td colspan="6"><%= brac_paginate @participants %></td>
+            </tr>
+          </tfoot>
+          <tbody>
+            <% @participants.each do |participant| %>
+            <tr>
+              <td><%= participant.human_type %></td>
+              <td><%= link_to participant.name, [:check_in, participant] %></td>
+              <td><%= participant.human_gender %></td>
+              <td><%= participant.country.try(:name) || '未知' %></td>
+              <td>
+                <% if participant.room %>
+                <%= "#{participant.room.hotel.name} #{participant.room.name}" %>
+                <% else %>
+                未预定
+                <% end %>
+              </td>
+              <td><%= raw participant.human_styled_check_in %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<% content_for :javascript do %>
+  <script>
+    jQuery(document).ready(function(){
+      $('#type').chosen({'width': '100%', 'white-space': 'nowrap'});
+      $('#checked_in').chosen({'width': '100%', 'white-space': 'nowrap'});
+    });
+  </script>
+<% end %>

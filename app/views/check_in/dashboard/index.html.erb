@@ -3,8 +3,71 @@
 </div>
 <div class="contentpanel">
   <div class="panel panel-default">
-    <div class="panel-body">
-      
+    <div class="panel-heading">
+      <h4 class="panel-title">报到统计</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_tag nil, class: 'form-horizontal form-bordered' do %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">全部代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">理事代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@councilman_participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@councilman_participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@councilman_participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">特邀代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@invited_participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@invited_participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@invited_participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">论文代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@regular_participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@regular_participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@regular_participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">旁听代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@visitor_participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@visitor_participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@visitor_participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">会员代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@member_participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@member_participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@member_participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">住宿代表：</label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{@hotel_participants.count}</span> 人，已报到 <span class=\"label label-success\">#{@hotel_participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{@hotel_participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">酒店统计</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_tag nil, class: 'form-horizontal form-bordered' do %>
+        <% @hotels.map(&:rooms).flatten.each do |room| %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label"><%= room.hotel.name %> <%= room.name %></label>
+          <div class="col-sm-6">
+            <p class="mt10"><%= raw "共 <span class=\"label label-info\">#{room.participants.count}</span> 人，已报到 <span class=\"label label-success\">#{room.participants.select(&:checked_in?).count}</span> 人，未报到 <span class=\"label label-danger\">#{room.participants.select(&:unchecked_in?).count}</span> 人" %></p>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

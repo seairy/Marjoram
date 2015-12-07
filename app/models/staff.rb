@@ -1,5 +1,6 @@
 class Staff < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
+  as_enum :role, [:admin, :regular, :volunteer], prefix: true, map: :string
   before_create :hash_password
   validates :account, presence: true, length: { maximum: 32 }
   validates :password, presence: true, length: { maximum: 16 }, on: :create

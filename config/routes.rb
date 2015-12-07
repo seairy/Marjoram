@@ -89,15 +89,21 @@ Rails.application.routes.draw do
   end
   namespace :check_in do
     root 'dashboard#index'
-    get 'dashboard', to: 'dashboard#index', as: :dashboard
+    get :dashboard, to: 'dashboard#index', as: :dashboard
+    get :search, to: 'search#create', as: :search
     resources :staffs
-    resources :participants
-    resource :profile do
-      get 'edit_password'
-      put 'update_password'
+    resources :participants do
+      member do
+        put :check
+        put :restore
+      end
     end
-    get 'signin', to: 'sessions#new', as: :signin
-    post 'signin', to: 'sessions#create'
-    get 'signout', to: 'sessions#destroy', as: :signout
+    resource :profile do
+      get :edit_password
+      put :update_password
+    end
+    get :signin, to: 'sessions#new', as: :signin
+    post :signin, to: 'sessions#create'
+    get :signout, to: 'sessions#destroy', as: :signout
   end
 end

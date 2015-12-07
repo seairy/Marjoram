@@ -6,7 +6,11 @@ class CheckIn::BaseController < ApplicationController
   
   protected
     def authenticate
-      redirect_to check_in_signin_path if session['staff'].blank?
+      begin
+        @current_staff = Staff.find(session['staff']['id'])
+      rescue
+        redirect_to check_in_signin_path
+      end
     end
 
     def convert_picker_to_datetime date, time

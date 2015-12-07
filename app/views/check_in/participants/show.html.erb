@@ -1,0 +1,123 @@
+<div class="pageheader">
+  <h2><i class="fa fa-file-text-o"></i> 参会者管理 <span>查看</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">参会者信息</h4>
+    </div>
+    <div class="panel-body panel-body-nopadding">
+      <%= form_tag nil, class: 'form-horizontal form-bordered' do %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">参会类型</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.human_type, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">姓名</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.name, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">性别</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.human_gender, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">国籍</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, (@participant.country.try(:name) || '未知'), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">座机号码</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.phone_number, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">手机号码</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.mobile_number, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">电子邮箱</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.email, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">工作单位</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.organization_name, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">世汉学会会员</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, boolean_tag(@participant.is_member), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">论文题目</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.subject, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">预定酒店</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, (@participant.room ? "#{@participant.room.hotel.name} #{@participant.room.name}" : '未预定'), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <% if @participant.room %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">房间号码</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.room_number, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <% end %>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">会议费</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, (@participant.registration_fees.zero? ? '免费' : "#{@participant.registration_fees}元"), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">会员费</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, (@participant.isclt_member_fees.zero? ? '无' : "#{@participant.isclt_member_fees}元"), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">报到状态</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, @participant.human_check_in, readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">操作人</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, (@participant.staff.try(:name) || '无'), readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="panel-footer">
+      <%= link_to '确认报到', check_check_in_participant_path(@participant), method: :put, data: { confirm: '确认该参会者报到吗？' }, class: 'btn btn-primary' unless @participant.checked_in? %>&nbsp;
+      <% if @current_staff.role_admin? or @current_staff.role_regular? %>
+      <%= link_to '编辑', edit_check_in_participant_path(@participant), class: 'btn btn-primary' %>&nbsp;
+      <% end %>
+      <% if @current_staff.role_admin? %>
+      <% if @participant.checked_in? %><%= link_to '取消报到', restore_check_in_participant_path(@participant), method: :put, data: { confirm: '确定要取消报到吗？' }, class: 'btn btn-danger' %>&nbsp;<% end %>
+      <%= link_to '删除', [:check_in, @participant], method: :delete, data: { confirm: '确定要删除吗？' }, class: 'btn btn-danger' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="pageheader">
+  <h2><i class="fa fa-list"></i> 参会者管理 <span>搜索结果</span></h2>
+</div>
+<div class="contentpanel">
+  <%= brac_flash %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-striped mb30">
+          <thead>
+            <tr>
+              <th>参会类型</th>
+              <th>姓名</th>
+              <th>性别</th>
+              <th>国籍</th>
+              <th>预定酒店</th>
+              <th>报到状态</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% if @participants.blank? %>
+            <tr>
+              <td colspan="7" class="text-center">未找到任何参会者！</td>
+            </tr>
+            <% else %>
+            <% @participants.each do |participant| %>
+            <tr>
+              <td><%= participant.human_type %></td>
+              <td><%= link_to participant.name, [:check_in, participant] %></td>
+              <td><%= participant.human_gender %></td>
+              <td><%= participant.country.try(:name) || '未知' %></td>
+              <td>
+                <% if participant.room %>
+                <%= "#{participant.room.hotel.name} #{participant.room.name}" %>
+                <% else %>
+                未预定
+                <% end %>
+              </td>
+              <td><%= raw participant.human_styled_check_in %></td>
+            </tr>
+            <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

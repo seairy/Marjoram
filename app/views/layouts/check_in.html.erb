@@ -23,11 +23,11 @@
         <div class="leftpanelinner">    
           <h5 class="sidebartitle">Navigation</h5>
           <ul class="nav nav-pills nav-stacked nav-bracket">
-            <li><%= link_to raw('<i class="fa fa-home"></i> <span>控制面板</span>'), cms_dashboard_path %></li>
-            <li class="nav-parent"><a href=""><i class="fa fa-file-text-o"></i> <span>参会者管理</span></a>
+            <li><%= link_to raw('<i class="fa fa-home"></i> <span>控制面板</span>'), check_in_dashboard_path %></li>
+            <li class="nav-parent"><a href=""><i class="fa fa-user"></i> <span>参会者管理</span></a>
               <ul class="children">
-                <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 文章列表"), cms_posts_path %></li>
-                <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 创建新文章"), new_cms_post_path %></li>
+                <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 参会者列表"), check_in_participants_path %></li>
+                <li><%= link_to raw("<i class=\"fa fa-caret-right\"></i> 创建参会者"), new_check_in_participant_path %></li>
               </ul>
             </li>
           </ul>
@@ -36,7 +36,7 @@
       <div class="mainpanel">
         <div class="headerbar">
           <a class="menutoggle"><i class="fa fa-bars"></i></a>
-          <%= form_tag cms_search_path, method: :get, class: 'searchform' do %>
+          <%= form_tag check_in_search_path, method: :get, class: 'searchform' do %>
             <input type="text" class="form-control" name="keyword" placeholder="查找参会者" />
           <% end %>
           <div class="header-right">
@@ -44,13 +44,13 @@
               <li>
                 <div class="btn-group">
                   <button class="btn btn-default dropdown-toggle tp-icon" data-toggle="dropdown">
-                    <span class="small">欢迎您，<%= session['staff']['name'] %></span>
+                    <span class="small">欢迎您，<%= @current_staff.name %></span>
                     <span class="caret"></span>
                   </button>
                   <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
-                    <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> 我的信息'), edit_cms_profile_path %></li>
-                    <li><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> 修改密码'), edit_password_cms_profile_path %></li>
-                    <li><%= link_to raw('<i class="glyphicon glyphicon-log-out"></i> 退出登录'), cms_signout_path %></li>
+                    <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> 我的信息'), edit_check_in_profile_path %></li>
+                    <li><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> 修改密码'), edit_password_check_in_profile_path %></li>
+                    <li><%= link_to raw('<i class="glyphicon glyphicon-log-out"></i> 退出登录'), check_in_signout_path %></li>
                   </ul>
                 </div>
               </li>
