@@ -47,4 +47,10 @@ namespace :check_in do
       end
     end
   end
+
+  task import_volunteer: :environment do
+    ['jiangtianye', 'bixue', 'miaoyulu', 'kongjie', 'leilei', 'fangyiyuan', 'zhangqi', 'chenyanying'].each do |account|
+      Staff.create!(account: account, password: '123456', password_confirmation: '123456', role: :volunteer, name: account, available: true)
+    end
+  end
 end

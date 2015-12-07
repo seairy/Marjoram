@@ -13,7 +13,7 @@ class CheckIn::ExcelsController < CheckIn::BaseController
           else
             0
           end
-          sheet.insert_row(i + 1, [participant.id, participant.human_type, participant.name, participant.organization_name, (participant.is_member? ? '是' : '否'), (participant.room.blank? ? '无' : "#{participant.entrance_date.day}日-#{participant.departure_date.day}日"), (participant.room.blank? ? '无' : "#{hotel_fees}元"), (participant.registration_fees.zero? ? '免费' : "#{participant.registration_fees}元"), (participant.isclt_member_fees.zero? ? '无' : "#{participant.isclt_member_fees}元"), (hotel_fees + participant.registration_fees + participant.isclt_member_fees), '', '', '', ''])
+          sheet.insert_row(i + 1, [participant.id, participant.human_type, participant.name, participant.organization_name, (participant.is_member? ? '是' : '否'), (participant.room.blank? ? '无' : "#{participant.entrance_date.day}日-#{participant.departure_date.day}日"), (participant.room.blank? ? '无' : "#{hotel_fees}元"), (participant.registration_fees.zero? ? '免费' : "#{participant.registration_fees}元"), (participant.isclt_member_fees.zero? ? '无' : "#{participant.isclt_member_fees}元"), "#{(hotel_fees + participant.registration_fees + participant.isclt_member_fees)}元", '', '', '', ''])
         end
       end
       book.write(file)
