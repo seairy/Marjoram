@@ -79,13 +79,19 @@
         <div class="form-group">
           <label class="col-sm-3 control-label">入住时间</label>
           <div class="col-sm-6">
-            <%= text_field_tag nil, @participant.entrance_date.strftime('%Y-%m-%d'), readonly: true, class: 'form-control' %>
+            <%= text_field_tag nil, @participant.entrance_date.try(:strftime, '%Y-%m-%d') || '未知', readonly: true, class: 'form-control' %>
           </div>
         </div>
         <div class="form-group">
           <label class="col-sm-3 control-label">离店时间</label>
           <div class="col-sm-6">
-            <%= text_field_tag nil, @participant.departure_date.strftime('%Y-%m-%d'), readonly: true, class: 'form-control' %>
+            <%= text_field_tag nil, @participant.departure_date.try(:strftime, '%Y-%m-%d') || '未知', readonly: true, class: 'form-control' %>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label">住宿费</label>
+          <div class="col-sm-6">
+            <%= text_field_tag nil, "#{((@participant.departure_date.day - @participant.entrance_date.day) * @participant.room.price).round}元", readonly: true, class: 'form-control' %>
           </div>
         </div>
         <% end %>
