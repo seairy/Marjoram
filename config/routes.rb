@@ -98,6 +98,11 @@ Rails.application.routes.draw do
         put :restore
       end
     end
+    resources :excels do
+      collection do
+        get :all
+      end
+    end
     resource :profile do
       get :edit_password
       put :update_password
